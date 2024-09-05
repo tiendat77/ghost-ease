@@ -33,42 +33,46 @@ One neat trick is that you can also create custom one-off templates just by addi
 
 ## Setup
 
+You'll need the Ghost CLI installed.
+
+```
+npm install ghost-cli@latest -g
+```
+
+Then install Ghost locally.
+
+```
+ghost install local
+```
+
 To see realtime changes during development, symlink the Ease theme folder to the `content/themes` folder in your local Ghost install.
 
 ```bash
-ln -s /path/to/ease /ghost/content/themes/ease
+ln -s /workspaces/ghost/ease /workspaces/ghost/ghost-instance/content/themes/ease
 ```
 
 Restart Ghost and select the Ease theme from **Settings**.
-
-From the theme's root directory, install the dependencies:
-
-```bash
-npm install
-```
-
-If Node isn't installed, follow the [official Node installation guide](https://nodejs.org/).
 
 &nbsp;
 
 ## Build, zip, and test your theme
 
-Compile your CSS and JavaScript assets for production with the following command:
+Styles are compiled using Gulp/PostCSS to polyfill future CSS spec. You'll need [Node](https://nodejs.org/), [Yarn](https://yarnpkg.com/) and [Gulp](https://gulpjs.com) installed globally. After that, from the theme's root directory:
 
 ```bash
-npm run build
+# Install
+yarn
+
+# Run build & watch for changes
+yarn dev
 ```
 
-Create a zip archive:
+Now you can edit `/assets/css/` files, which will be compiled to `/assets/built/` automatically.
+
+The `zip` Gulp task packages the theme files into `dist/ease.zip`, which you can then upload to your site.
 
 ```bash
-npm run zip
-```
-
-Use `gscan` to test your theme for compatibility with Ghost:
-
-```bash
-npm run test
+yarn zip
 ```
 
 &nbsp;
