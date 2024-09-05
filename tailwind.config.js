@@ -1,7 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    '**/*.{hbs}',
+    './*.hbs',
+    './**/*.hbs',
   ],
   theme: {
     container: {
@@ -147,6 +148,7 @@ module.exports = {
   },
   plugins: [
     require('daisyui'),
+    require('@tailwindcss/typography'),
   ],
 }
 
