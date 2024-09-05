@@ -1,0 +1,61 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
+{
+  "name": "Ubuntu",
+  "image": "mcr.microsoft.com/devcontainers/base:jammy",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {},
+    "ghcr.io/schlich/devcontainer-features/powerlevel10k:1": {},
+    "ghcr.io/georgofenbeck/features/lazygit-linuxbinary:1": {}
+  },
+  "mounts": [
+    "source=node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
+  ],
+  "forwardPorts": [
+    3000
+  ],
+  "portsAttributes": {
+    "3000": {
+      "visibility": "public"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "diffEditor.ignoreTrimWhitespace": false,
+        "editor.emptySelectionClipboard": false,
+        "editor.indentSize": 2,
+        "editor.renderWhitespace": "all",
+        "editor.tabSize": 2,
+        "eslint.notebooks.rules.customizations": [
+          {
+            "rule": "*",
+            "severity": "warn"
+          }
+        ],
+        "eslint.options": {},
+        "eslint.timeBudget.onValidation": {
+          "error": 8000,
+          "warn": 4000
+        },
+        "explorer.confirmDelete": false,
+        "files.trimTrailingWhitespace": true,
+        "git.autofetch": true,
+        "git.confirmSync": false,
+        "headwind.runOnSave": false,
+        "html.format.wrapLineLength": 0,
+        "window.zoomLevel": 1,
+        "javascript.updateImportsOnFileMove.enabled": "always",
+        "security.workspace.trust.untrustedFiles": "open",
+        "typescript.updateImportsOnFileMove.enabled": "always",
+        "editor.detectIndentation": false,
+        "remote.localPortHost": "allInterfaces"
+      },
+      "extensions": [
+        "streetsidesoftware.code-spell-checker",
+        "dbaeumer.vscode-eslint",
+        "tyriar.sort-lines"
+      ]
+    }
+  }
+}
