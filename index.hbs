@@ -1,41 +1,62 @@
 {{!< default}}
 
-<div class="gh-outer">
-<main class="site-main gh-inner">
+<div class="pb-0 pt-15 md:pb-15">
+    <main class="container">
 
-    {{#if @custom.show_featured_posts}}
-        {{> "featured-posts"}}
-    {{/if}}
+        {{#if @custom.show_featured_posts}}
+            {{> "featured-posts"}}
+        {{/if}}
 
-    {{#get "tags" limit="all"}}
-    <div class="topic-feed">
+        {{#get "tags" limit="all"}}
+        <div class="grid gap-x-15 gap-y-20 lg:grid-cols-2">
 
-        {{#foreach tags}}
-            <section class="topic">
-                <header class="topic-header">
-                    <h2 class="topic-name">
-                        <a href="{{url}}">{{name}}</a>
-                    </h2>
-                </header>
-                {{#get "posts" order="published_at asc" filter="tag:{{slug}}" limit="5" as |featured|}}
-                    <ul class="topic-article-feed">
-                        {{#foreach featured}}
-                        <li class="topic-article">
-                            <h3 class="topic-article-title">
-                                <a class="topic-article-link" href="{{url}}">
-                                    {{> "icons/chevron-right"}} {{title}}
+            {{#foreach tags}}
+                <section>
+                    <header class="border-b flex mb-5 pb-3">
+                        <h2 class="text-3xl lg:text-4xl">
+                            <a href="{{url}}">{{name}}</a>
+                        </h2>
+                    </header>
+
+                    {{#get "posts" order="published_at asc" filter="tag:{{slug}}" limit="5" as |featured|}}
+                        <ul class="menu p-0">
+                            {{#foreach featured}}
+                            <li class="">
+                                <a
+                                    href="{{url}}"
+                                    class="px-1 text-base"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                        class="w-4 h-4"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                        />
+                                    </svg>
+
+                                    <span>{{title}}</span>
                                 </a>
-                            </h3>
-                        </li>
-                        {{/foreach}}
-                    </ul>
-                {{/get}}
-                <a class="topic-more" href="{{url}}">Show more →</a>
-            </section>
-        {{/foreach}}
+                            </li>
+                            {{/foreach}}
+                        </ul>
+                    {{/get}}
 
-    </div>
-    {{/get}}
+                    <a
+                        href="{{url}}"
+                        class="inline-block text-ghost font-bold mt-5"
+                    >
+                        Show more →
+                    </a>
+                </section>
+            {{/foreach}}
 
-</main>
+        </div>
+        {{/get}}
+
+    </main>
 </div>

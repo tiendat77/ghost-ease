@@ -13,7 +13,7 @@
     {{ghost_head}}
 </head>
 
-<body>
+<body class="flex flex-col">
 
     <header class="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 dark:border-slate-50/[0.06] bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent">
         <div class="container relative flex items-center py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 dark:border-slate-300/10 px-4">
@@ -77,43 +77,62 @@
     </header>
 
     {{#is "home"}}
-    <div class="site-cover{{#unless @site.cover_image}} no-image{{/unless}} u-overlay">
+    <div
+        class="hero min-h-screen relative"
+        style="background-image: url({{img_url @site.cover_image}});"
+    >
 
-        {{#if @site.cover_image}}
-            <img class="cover-image jarallax-img u-object-fit" src="{{img_url @site.cover_image}}" alt="{{@site.title}}">
-        {{/if}}
+        <div class="hero-overlay bg-opacity-20"></div>
+        <div class="hero-content text-center">
+            <div class="max-w-md">
+                <h1 class="mb-5 text-5xl font-bold text-neutral-content">
+                    Hello
+                </h1>
+                {{#if @site.description}}
+                    <p class="mb-5 text-neutral-content">
+                        {{@site.description}}
+                    </p>
+                {{/if}}
 
-        <div class="cover-content">
-            {{#if @site.description}}
-                <div class="cover-description">{{@site.description}}</div>
-            {{/if}}
-            <div class="search">
-                <form class="search-form">
-                    <div class="form-wrapper">
-                        <div class="search-field" data-ghost-search>Search ...</div>
-                        <button class="form-button search-button" type="submit" data-ghost-search>
-                            {{> "icons/search"}}
-                            {{> "icons/close"}}
-                        </button>
-                    </div>
-                </form>
-                <div class="search-result"></div>
+                <label
+                    data-ghost-search
+                    class="input input-bordered flex items-center gap-2 md:min-w-90"
+                >
+                    <input
+                        type="text"
+                        class="grow"
+                        placeholder="Search"
+                    />
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        class="h-4 w-4 opacity-70"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </label>
             </div>
         </div>
-
     </div>
     {{/is}}
 
-    <div class="site-content ">
+    <div class="pb-0 pt-15 md:pb-15 flex-grow">
         {{{body}}}
     </div>
 
-    <footer class="container gh-foot{{#unless @site.secondary_navigation}} no-menu{{/unless}} gh-outer">
-        <div class="gh-foot-inner gh-inner">
-            <div class="gh-copyright">
-                {{@site.title}} © {{date format="YYYY"}}
-            </div>
-        </div>
+    <footer class="footer footer-center bg-base-100 text-base-content rounded p-10">
+        <nav class="grid grid-flow-col gap-4">
+            <a class="link link-hover">About us</a>
+            <a class="link link-hover">Contact</a>
+        </nav>
+
+        <aside>
+            <p>{{@site.title}} © {{date format="YYYY"}} - All right reserved</p>
+        </aside>
     </footer>
 
 {{#is "post, page"}}
@@ -125,7 +144,6 @@
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous">
 </script>
-<script src="{{asset "built/main.min.js"}}"></script>
 
 {{ghost_foot}}
 

@@ -1,3 +1,5 @@
+import plugin from 'tailwindcss/plugin';
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -113,42 +115,21 @@ module.exports = {
     logs: false,
     rtl: false,
     darkTheme: 'dark',
-    themes: [
-      {
-        light: {
-          ...require('daisyui/src/theming/themes')['light'],
-          'primary': '#d70718',
-          'primary-content': '#FFFFFF',
-          'secondary': '#0f172a',
-          'secondary-content': '#FFFFFF',
-          'accent': '#FFBC42',
-          'accent-content': '#FFFFFF',
-          'neutral': '#D1D5DB',
-          'neutral-content': '#FFFFFF',
-          'info-content': '#FFFFFF',
-          'warning-content': '#FFFFFF',
-          'base-100': '#FFFFFF',
-        },
-        dark: {
-          ...require('daisyui/src/theming/themes')['dark'],
-          'primary': '#d70718',
-          'primary-content': '#FFFFFF',
-          'secondary': '#0f172a',
-          'secondary-content': '#FFFFFF',
-          'accent': '#FFBC42',
-          'accent-content': '#FFFFFF',
-          'neutral': '#D1D5DB',
-          'neutral-content': '#FFFFFF',
-          'info-content': '#FFFFFF',
-          'warning-content': '#FFFFFF',
-          'base-100': '#111827',
-        },
-      }
-    ]
   },
   plugins: [
     require('daisyui'),
     require('@tailwindcss/typography'),
+
+    plugin(({addComponents}) => {
+        addComponents({
+          '.bg-card': {
+            backgroundColor: 'var(--color-bg)'
+          },
+          '.text-ghost': {
+            color: 'var(--color-primary)'
+          },
+        });
+      }),
   ],
 }
 
