@@ -2,17 +2,20 @@
 
 {{#post}}
 
-<main class="site-main">
-    <article class="{{post_class}}">
+<main class="container">
+    <article class="{{post_class}} prose">
 
         {{#match @page.show_title_and_feature_image}}
-            <header class="gh-article-header gh-canvas">
-                <h1 class="gh-article-title">{{title}}</h1>
+            <header class="gh-canvas">
+                <h1 class="mb-4">
+                    {{title}}
+                </h1>
+
                 {{> "post-image"}}
             </header>
         {{/match}}
 
-        <div class="post-content gh-content gh-canvas">
+        <div class="gh-canvas">
             {{content}}
         </div>
 

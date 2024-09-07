@@ -1,27 +1,35 @@
 {{!< default}}
 
-<main class="site-main">
+<main class="container">
 
     {{#author}}
-    <div class="term-container gh-canvas">
-        <section class="term">
-            {{#if profile_image}}
-                <img class="term-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}">
-            {{/if}}
-            <h1 class="term-name">{{name}}</h1>
-            {{#if bio}}
-                <div class="term-description">{{bio}}</div>
-            {{/if}}
-        </section>
-    </div>
+    <section class="mt-8 mb-6 gh-canvas">
+        {{#if profile_image}}
+            <img
+                class="w-16 h-16 min-w-16 min-h-16 mb-4 rounded-full"
+                src="{{img_url profile_image size="xs"}}"
+                alt="{{name}}"
+            />
+        {{/if}}
+
+        <h1 class="font-bold text-2xl">
+            {{name}}
+        </h1>
+
+        {{#if bio}}
+            <div class="mt-2 max-w-md">{{bio}}</div>
+        {{/if}}
+    </section>
     {{/author}}
 
-    <div class="post-feed gh-canvas">
+    <div class="grid grid-flow-row divide-y gh-canvas">
         {{#foreach posts}}
             {{> "loop"}}
         {{/foreach}}
     </div>
 
-    {{pagination}}
+    <div class="gh-canvas">
+        {{pagination}}
+    </div>
 
 </main>
