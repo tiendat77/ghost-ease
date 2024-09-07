@@ -16,19 +16,6 @@ production stylesheet in assets/built/screen.css using: npm run dev
 /* Base components */
 @import "vars.css";
 @import "components/global.css";
-@import "components/forms.css";
-@import "components/buttons.css";
-
-/* Ghost components */
-@import "ghost/content.css";
-@import "ghost/readmore.css";
-@import "ghost/members.css";
-@import "ghost/errors.css";
-@import "ghost/footer.css";
-@import "ghost/badge.css";
-@import "ghost/pagination.css";
-@import "ghost/comments.css";
-
 
 
 /* Main - Your styles here! Edit below
@@ -259,4 +246,23 @@ html,
     .gh-author-meta {
         font-size: 1.6rem;
     }
+}
+
+.gh-canvas {
+    --gap: 4vw;
+    --main: min(var(--content-width, 720px), 100% - var(--gap) * 2);
+    --wide: minmax(0, calc((var(--container-width, 1200px) - var(--content-width, 720px)) / 2));
+    --full: minmax(var(--gap), 1fr);
+
+    display: grid;
+    grid-template-columns:
+        [full-start] var(--full)
+        [wide-start] var(--wide)
+        [main-start] var(--main) [main-end]
+        var(--wide) [wide-end]
+        var(--full) [full-end];
+}
+
+.gh-canvas > * {
+    grid-column: main-start / main-end;
 }

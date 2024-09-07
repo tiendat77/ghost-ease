@@ -1,56 +1,81 @@
 {{!< default}}
 
-<main class="site-main">
+<main class="container">
 
     {{#post}}
+    <article class="{{post_class}} prose">
 
-    <article class="{{post_class}}">
+        <header class="gh-canvas">
+            <h1 class="mb-4">{{title}}</h1>
 
-        <header class="gh-article-header gh-canvas">
-            <h1 class="gh-article-title">{{title}}</h1>
-            <div class="post-meta">
+            <div>
                 Last updated on&nbsp;
-                <time datetime="{{date format="YYYY-MM-DD"}}">{{date updated_at}}</time>
+                <time datetime="{{date format="YYYY-MM-DD"}}">
+                    {{date updated_at}}
+                </time>
             </div>
+
             {{> "post-image"}}
         </header>
 
-        <div class="gh-content gh-canvas">
+        <div class="gh-canvas">
             {{content}}
         </div>
 
-        <div class="pagination-container gh-canvas">
-        <nav class="pagination">
+        <div class="gh-canvas">
+            <nav class="flex items-center justify-between my-6 not-prose">
 
-            <div class="pagination-left">
-                {{#prev_post}}
-                    <a class="newer-posts" href="{{url}}">
-                        <span class="pagination-label">Previous</span>
-                        {{title}}
-                    </a>
-                {{/prev_post}}
-            </div>
+                <div class="pagination-left">
+                    {{#prev_post}}
+                        <a class="gap-2 btn btn-sm md:btn-md lg:gap-3" href="{{url}}">
+                            <svg
+                                class="w-6 h-6 fill-current md:h-8 md:w-8"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24" height="24"
+                                viewBox="0 0 24 24"
+                            >
+                                <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"></path>
+                            </svg>
 
-            <div class="pagination-right">
-                {{#next_post}}
-                    <a class="older-posts" href="{{url}}">
-                        <span class="pagination-label">Next</span>
-                        {{title}}
-                    </a>
-                {{/next_post}}
-            </div>
+                            <div class="flex flex-col items-start">
+                                <span class="hidden mb-1 text-xs font-normal md:block">
+                                    Prev
+                                </span>
+                                <span class="truncate max-w-40">
+                                    {{title}}
+                                </span>
+                            </div>
+                        </a>
+                    {{/prev_post}}
+                </div>
 
-        </nav>
+                <div class="pagination-right">
+                    {{#next_post}}
+                        <a class="gap-2 btn btn-neutral btn-sm md:btn-md lg:gap-3" href="{{url}}">
+                            <div class="flex flex-col items-end">
+                                <span class="hidden mb-1 text-xs font-normal md:block">
+                                    Next
+                                </span>
+                                <span class="truncate max-w-40">
+                                    {{title}}
+                                </span>
+                            </div>
+
+                            <svg
+                                class="w-6 h-6 fill-current md:h-8 md:w-8"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24" height="24"
+                                viewBox="0 0 24 24"
+                            >
+                                <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"></path>
+                            </svg>
+                        </a>
+                    {{/next_post}}
+                </div>
+            </nav>
         </div>
 
-        {{#if comments}}
-            <div class="gh-comments gh-canvas">
-                {{comments}}
-            </div>
-        {{/if}}
-
     </article>
-
     {{/post}}
 
 </main>

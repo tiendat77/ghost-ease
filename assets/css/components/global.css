@@ -121,6 +121,11 @@ a:not([class]) {
     text-decoration-skip-ink: auto;
 }
 
+a {
+  text-decoration: none;
+  text-decoration-skip-ink: auto;
+}
+
 h1,
 h2,
 h3,
@@ -130,46 +135,6 @@ h6 {
     margin: 0;
     line-height: 1.15em;
     font-weight: 700;
-}
-
-h1 {
-    font-size: 4.6rem;
-    letter-spacing: -0.5px;
-}
-@media (max-width: 500px) {
-    h1 {
-        font-size: 2.7rem;
-    }
-}
-
-h2 {
-    font-size: 3.6rem;
-}
-@media (max-width: 500px) {
-    h2 {
-        font-size: 2.2rem;
-    }
-}
-
-h3 {
-    font-size: 3.2rem;
-}
-@media (max-width: 500px) {
-    h3 {
-        font-size: 1.8rem;
-    }
-}
-
-h4 {
-    font-size: 2.6rem;
-}
-
-h5 {
-    font-size: 2.4rem;
-}
-
-h6 {
-    font-size: 2.2rem;
 }
 
 /* Remove all animations and transitions for people that prefer not to see them */
