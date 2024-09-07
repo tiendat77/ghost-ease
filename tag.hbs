@@ -1,19 +1,19 @@
 {{!< default}}
 
-<main class="site-main">
+<main class="container">
 
     {{#tag}}
-    <div class="term-container gh-canvas">
-        <section class="term">
-            <h1 class="term-name">{{name}}</h1>
-            {{#if description}}
-                <div class="term-description">{{description}}</div>
-            {{/if}}
-        </section>
-    </div>
+    <section class="mt-8 mb-6">
+        <h1 class="text-3xl">
+            {{name}}
+        </h1>
+        {{#if description}}
+            <div class="mt-2">{{description}}</div>
+        {{/if}}
+    </section>
     {{/tag}}
 
-    <div class="post-feed gh-canvas">
+    <div class="grid grid-flow-row divide-y">
         {{#foreach posts}}
             {{> "loop"}}
         {{/foreach}}
