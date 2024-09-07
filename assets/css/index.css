@@ -16,6 +16,7 @@ production stylesheet in assets/built/screen.css using: npm run dev
 /* Base components */
 @import "vars.css";
 @import "components/global.css";
+@import "misc/owl.css";
 
 
 /* Main - Your styles here! Edit below
