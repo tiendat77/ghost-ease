@@ -3,6 +3,33 @@
 <main class="container">
 
     {{#post}}
+    {{#has tag="releases"}}
+    <div class="gh-canvas">
+        <div class="flex pb-8">
+            <a
+                href="/releases"
+                class="btn btn-ghost btn-sm"
+            >
+                <svg
+                    viewBox="0 -9 3 24"
+                    class="overflow-visible mr-3 text-slate-400 w-auto h-6 group-hover:text-slate-600 dark:group-hover:text-slate-300"
+                >
+                    <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M3 0L0 3L3 6"
+                    />
+                </svg>
+
+                Go back
+            </a>
+        </div>
+    </div>
+    {{/has}}
+
     <article class="{{post_class}} prose">
 
         <header class="gh-canvas">
@@ -22,6 +49,7 @@
             {{content}}
         </div>
 
+        {{^has tag="releases"}}
         <div class="gh-canvas">
             <nav class="flex items-center justify-between my-6 not-prose">
 
@@ -74,6 +102,7 @@
                 </div>
             </nav>
         </div>
+        {{/has}}
 
     </article>
     {{/post}}
