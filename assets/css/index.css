@@ -267,3 +267,7 @@ html,
 .gh-canvas > * {
     grid-column: main-start / main-end;
 }
+
+.gh-post-upgrade-cta-content {
+    background-color: transparent !important;
+}
