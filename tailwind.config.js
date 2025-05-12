@@ -109,12 +109,12 @@ module.exports = {
     },
   },
   daisyui: {
+    themes: ['light'],
     styled: true,
     base: false,
     utils: true,
     logs: false,
     rtl: false,
-    darkTheme: 'dark',
   },
   plugins: [
     require('daisyui'),
