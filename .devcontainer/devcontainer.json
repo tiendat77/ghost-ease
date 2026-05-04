@@ -4,7 +4,7 @@
   "name": "Ubuntu",
   "image": "mcr.microsoft.com/devcontainers/base:jammy",
   "features": {
-    "ghcr.io/devcontainers/features/node:1": {},
+    "ghcr.io/devcontainers/features/node:2": {},
     "ghcr.io/schlich/devcontainer-features/powerlevel10k:1": {},
     "ghcr.io/georgofenbeck/features/lazygit-linuxbinary:1": {}
   },
